@@ -1,0 +1,148 @@
+  int KirmiziPin = 9;
+  int YesilPin = 10;
+  int MaviPin = 11;
+  int veri;
+void setup() {
+ Serial.begin(9600);
+    pinMode(KirmiziPin, OUTPUT);
+    pinMode(YesilPin, OUTPUT);
+    pinMode(MaviPin, OUTPUT);
+}
+void Renk(int kirmizi, int yesil, int mavi) {
+  kirmizi = 255 - kirmizi;
+  yesil = 255 - yesil;
+  mavi = 255 - mavi;
+    analogWrite(KirmiziPin, kirmizi);
+    analogWrite(YesilPin, yesil);
+    analogWrite(MaviPin, mavi);
+ }
+void Cizgi(int kirmizi, int yesil, int mavi) {
+  kirmizi = 255 - kirmizi;
+  yesil = 255 - yesil;
+  mavi = 255 - mavi;
+    analogWrite(KirmiziPin, kirmizi);
+    analogWrite(YesilPin, yesil);
+    analogWrite(MaviPin, mavi);
+    delay(600);
+    Renk(0,0,0);
+    delay(300);
+}
+void Nokta(int kirmizi, int yesil, int mavi) {
+  kirmizi = 255 - kirmizi;
+  yesil = 255 - yesil;
+  mavi = 255 - mavi;
+    analogWrite(KirmiziPin, kirmizi);
+    analogWrite(YesilPin, yesil);
+    analogWrite(MaviPin, mavi);
+    delay(300);
+    Renk(0,0,0);
+    delay(300);
+}
+
+void Bosluk() {
+  Renk(0,0,0);
+  delay(1000);
+}
+void loop() {
+ if(Serial.available()>0) {
+  veri = Serial.read();
+  }
+  if(veri == 'a' ) {
+    Renk(255,0,0);
+  }
+  if(veri == 'b' ) {
+    Renk(00,255,0);
+  }
+  if(veri == 'c' ) {
+    Renk(0,0,255);
+  }
+  if(veri == 'd' ) {
+    Renk(255,170,0);
+  }
+  if(veri == 'e' ) {
+    Renk(0,255,255);
+  }
+  if(veri == 'f' ) {
+    Renk(255, 0, 225);
+  }
+  if(veri == 'g' ) {
+    int r=9;
+    int g=10;
+    int b=11;
+    int rDeger=random(0,255);
+    int gDeger=random(0,255);
+    int bDeger=random(0,255);
+      analogWrite(r,rDeger);
+      analogWrite(g,gDeger);
+      analogWrite(b,bDeger);
+      delay(200);
+  } 
+  if(veri == 's') {
+    
+    //B
+    Cizgi(255,0,0);
+    Nokta(255,0,0);
+    Nokta(255,0,0);
+    Nokta(255,0,0);
+
+    Bosluk();
+
+    //E
+    Nokta(255,0,0);
+
+    Bosluk();
+
+    //G
+    Cizgi(255,0,0);
+    Cizgi(255,0,0);
+    Nokta(255,0,0);
+
+    Bosluk();
+
+    //Ü
+    Nokta(255,0,0);
+    Nokta(255,0,0);
+    Cizgi(255,0,0);
+    Cizgi(255,0,0);
+
+    Bosluk();
+
+    //M
+    Cizgi(255,0,0);
+    Cizgi(255,0,0);
+
+    delay(4000);
+
+    //Z
+    Cizgi(0,0,255);
+    Cizgi(0,0,255);
+    Nokta(0,0,255);
+    Nokta(0,0,255);  
+
+    Bosluk();
+
+    //E
+    Nokta(0,0,255);
+
+    Bosluk();
+
+    //K
+    Cizgi(0,0,255);
+    Nokta(0,0,255);
+    Cizgi(0,0,255);
+
+    Bosluk();
+
+    //İ
+    Nokta(0,0,255);
+    Nokta(0,0,255);
+
+    Bosluk();
+
+   //End of the loop  
+    Renk(255,255,255);
+    delay(500);
+    Renk(0,0,0);
+    delay(500);
+    }
+}
